@@ -33,6 +33,9 @@ class User implements UserInterface
      */
     private $password;
 
+    public const ROLE_USER = 'ROLE_USER';
+    public const ROLE_ADMIN = 'ROLE_ADMIN';
+
     public function getId(): ?int
     {
         return $this->id;
