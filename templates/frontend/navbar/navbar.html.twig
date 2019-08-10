@@ -27,9 +27,23 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">無効</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索...">
-            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
-        </form>
+
+        {% if app.user %}
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('app_logout') }}">ログアウト</a>
+                </li>
+            </ul>
+        {% else %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('app_login') }}">ログイン</a>
+                </li>
+            </ul>
+        {% endif %}
+
+
+
     </div><!-- /.navbar-collapse -->
 </nav>
