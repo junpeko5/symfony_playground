@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LogoutController extends AbstractController
 {
     /**
-     * @Route("/logout", name="app_logout", methods={"GET"})
+     * @Route("/logout", name="admin_logout", methods={"GET"})
      */
     public function logout()
     {
