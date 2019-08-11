@@ -13,7 +13,7 @@ class BlogPostFixtures extends Fixture
         $BlogPost = new BlogPost();
         $BlogPost->setTitle('フリーランスになりました。');
         $BlogPost->setContent('Priceless widget!');
-        $BlogPost->setSlug('test');
+        $BlogPost->setSlug('free');
         $BlogPost->setCreatedAt(new \DateTime());
         $BlogPost->setUpdatedAt(new \DateTime());
         $manager->persist($BlogPost);
@@ -21,8 +21,8 @@ class BlogPostFixtures extends Fixture
 
         $BlogPost = new BlogPost();
         $BlogPost->setTitle('ブログ開設しました。');
-        $BlogPost->setContent('');
-        $BlogPost->setSlug('test');
+        $BlogPost->setContent('ブログ開設しました。今後とも宜しくお願いいたします。');
+        $BlogPost->setSlug('blog-start');
         $BlogPost->setCreatedAt(new \DateTime());
         $BlogPost->setUpdatedAt(new \DateTime());
         $manager->persist($BlogPost);
