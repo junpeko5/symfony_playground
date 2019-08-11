@@ -18,5 +18,14 @@ class BlogPostFixtures extends Fixture
         $BlogPost->setUpdatedAt(new \DateTime());
         $manager->persist($BlogPost);
         $manager->flush();
+
+        $BlogPost = new BlogPost();
+        $BlogPost->setTitle('ブログ開設しました。');
+        $BlogPost->setContent('');
+        $BlogPost->setSlug('test');
+        $BlogPost->setCreatedAt(new \DateTime());
+        $BlogPost->setUpdatedAt(new \DateTime());
+        $manager->persist($BlogPost);
+        $manager->flush();
     }
 }
