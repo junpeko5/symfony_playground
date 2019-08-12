@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\BlogPostBundle\Repository;
 
 use App\Domain\BlogPost\Model\BlogPost;
+use App\Domain\User\Repository\BlogPostRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -14,12 +15,14 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method BlogPost[]    findAll()
  * @method BlogPost[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class DoctrineBlogPostRepository extends ServiceEntityRepository
+class DoctrineBlogPostRepository extends ServiceEntityRepository implements BlogPostRepository
 {
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, BlogPost::class);
     }
+
+
 
     // /**
     //  * @return BlogPost[] Returns an array of BlogPost objects
@@ -49,4 +52,22 @@ class DoctrineBlogPostRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getAll(): array
+    {
+        // TODO: Implement getAll() method.
+    }
+
+    public function save(BlogPost $blogPost)
+    {
+        // TODO: Implement save() method.
+    }
+
+    /**
+     * @param string $slug
+     * @return BlogPost
+     */
+    public function findBlogPostBySlug(string $slug): BlogPost
+    {
+        return $this->findOneBy(['slug' => $slug]);
+    }
 }
