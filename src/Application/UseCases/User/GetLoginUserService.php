@@ -1,16 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Application\UseCases\User;
 
-use App\Domain\User\Model\User;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class LoginUserService
+class GetLoginUserService
 {
+    /**
+     * @var AuthenticationUtils
+     */
     private $authenticationUtils;
 
+    /**
+     * @var string | null
+     */
     private $error;
 
+    /**
+     * @var string
+     */
     private $lastUserName;
 
     public function __construct(AuthenticationUtils $authenticationUtils)
@@ -25,12 +35,18 @@ class LoginUserService
         $this->lastUserName = $this->authenticationUtils->getLastUsername();
     }
 
+    /**
+     * @return string | null
+     */
     public function getError()
     {
         return $this->error;
     }
 
-    public function getLastUserName()
+    /**
+     * @return string
+     */
+    public function getLastUserName() :string
     {
         return $this->lastUserName;
     }
