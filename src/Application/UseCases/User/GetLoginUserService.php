@@ -21,7 +21,7 @@ class GetLoginUserService
     /**
      * @var string
      */
-    private $lastUserName;
+    private $email;
 
     public function __construct(AuthenticationUtils $authenticationUtils)
     {
@@ -32,7 +32,7 @@ class GetLoginUserService
     {
         $this->error = $this->authenticationUtils->getLastAuthenticationError();
 
-        $this->lastUserName = $this->authenticationUtils->getLastUsername();
+        $this->email = $this->authenticationUtils->getLastUsername();
     }
 
     /**
@@ -44,10 +44,10 @@ class GetLoginUserService
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getLastUserName() :string
+    public function getEmail()
     {
-        return $this->lastUserName;
+        return $this->email;
     }
 }

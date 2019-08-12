@@ -3,7 +3,10 @@
 namespace App\UI\Controller\http;
 
 use App\Application\UseCases\User\GetLoginUserService;
+use App\Domain\User\Model\User;
+use App\Infrastructure\UserBundle\Form\LoginUserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -11,9 +14,12 @@ class LoginController extends AbstractController
 {
     private $useCase;
 
-    public function __construct(GetLoginUserService $useCase)
+    private $formFactory;
+
+    public function __construct(GetLoginUserService $useCase, FormFactoryInterface $formFactory)
     {
         $this->useCase = $useCase;
+        $this->formFactory = $formFactory;
     }
 
     /**
@@ -28,10 +34,13 @@ class LoginController extends AbstractController
 
         $this->useCase->execute();
 
+        $form = $this->formFactory->createNamed('', LoginUserType::class, new User());
+
         return $this->render('frontend/security/login.html.twig',
             [
-                'last_username' => $this->useCase->getLastUserName(),
+                'email' => $this->useCase->getEmail(),
                 'error' => $this->useCase->getError(),
+                'form' => $form->createView(),
             ]
         );
     }

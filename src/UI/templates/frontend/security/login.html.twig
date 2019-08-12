@@ -4,54 +4,44 @@
 
 {% block body %}
     <div class="container">
-        <form method="post">
-            <input type="hidden" name="_csrf_token"
-                   value="{{ csrf_token('authenticate') }}"
-            >
-            <div class="row">
-                {% if error %}
-                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
-            </div>
-            <div class="row">
-                <h1 class="h3 mb-3 font-weight-normal">サインインしてください。</h1>
-            </div>
-            <div class="row">
-                <label for="inputEmail" class="sr-only">Eメールアドレス</label>
-                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Eメールアドレス" required autofocus>
-            </div>
-            <div class="row">
-                <label for="inputPassword">パスワード</label>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="パスワード" required>
-            </div>
-            <hr class="mb-4">
-            <div class="row">
-                <div class="form-group">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary">送信する</button>
-                    </div>
-                </div>
-            </div>
+{#                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.#}
+{#                See https://symfony.com/doc/current/security/remember_me.html#}
 
-            {#
-                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                See https://symfony.com/doc/current/security/remember_me.html
+{#                <div class="checkbox mb-3">#}
+{#                    <label>#}
+{#                        <input type="checkbox" name="_remember_me"> Remember me#}
+{#                    </label>#}
+{#                </div>#}
 
-                <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" name="_remember_me"> Remember me
-                    </label>
-                </div>
-{#                #}
-            {#            <div class="form-group form-check">#}
-            {#                <input type="checkbox" class="form-check-input" id="exampleCheck1">#}
-            {#                <label class="form-check-label" for="exampleCheck1">記憶する</label>#}
-            {#            </div>#}
-
-
-
-        </form>
+{#                        <div class="form-group form-check">#}
+{#                            <input type="checkbox" class="form-check-input" id="exampleCheck1">#}
+{#                            <label class="form-check-label" for="exampleCheck1">記憶する</label>#}
+{#                        </div>#}
+        <div class="row">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <h1 class="h3 mb-3 font-weight-normal">サインインしてください。</h1>
+        </div>
+        {{ form_start(form, {'action': path('admin_login'), 'method': 'POST'}) }}
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+        <div class="row">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+        </div>
+        <div class="row">
+            {{ form_label(form.password) }}
+            {{ form_widget(form.password) }}
+        </div>
+        <hr class="mb-4">
+        <div class="box-footer">
+            {{ form_widget(form.save) }}
+        </div>
+        {{ form_end(form) }}
     </div>
 
 
