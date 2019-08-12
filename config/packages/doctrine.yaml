@@ -14,9 +14,24 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         mappings:
-            App:
+#            App:
+#                is_bundle: false
+#                type: annotation
+#                dir: '%kernel.project_dir%/src/Entity'
+#                prefix: 'App\Entity'
+#                alias: App
+            User:
+                type: yml
+                prefix: 'App\Domain\User\Model'
+                dir: '%kernel.root_dir%/../src/Infrastructure/UserBundle/Resources/config/persistence'
                 is_bundle: false
-                type: annotation
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+            BlogPost:
+              type: yml
+              prefix: 'App\Domain\BlogPost\Model'
+              dir: '%kernel.root_dir%/../src/Infrastructure/BlogPostBundle/Resources/config/persistence'
+              is_bundle: false
+#            App:
+#                type: annotation
+#                prefix: 'App\Domain\User\Model'
+#                dir: '%kernel.project_dir%/src/Domain/User/Model'
+#                is_bundle: false

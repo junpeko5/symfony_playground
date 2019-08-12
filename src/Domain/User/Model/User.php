@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Entity;
+namespace App\Domain\User\Model;
 
-use Doctrine\ORM\Mapping as ORM;
+//use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- */
+
 class User implements UserInterface
 {
     /**
@@ -17,20 +15,11 @@ class User implements UserInterface
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
+
     private $email;
 
-    /**
-     * @ORM\Column(type="json")
-     */
     private $roles = [];
 
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
     private $password;
 
     public const ROLE_USER = 'ROLE_USER';

@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\BlogPost;
+use App\Domain\BlogPost\Model\BlogPost;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
