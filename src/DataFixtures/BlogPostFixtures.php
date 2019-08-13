@@ -10,22 +10,25 @@ class BlogPostFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $BlogPost = new BlogPost();
-        $BlogPost->setTitle('フリーランスになりました。');
-        $BlogPost->setContent('Priceless widget!');
-        $BlogPost->setSlug('free');
-        $BlogPost->setCreatedAt(new \DateTime());
-        $BlogPost->setUpdatedAt(new \DateTime());
-        $manager->persist($BlogPost);
+        for ($i = 0; $i < 15; $i++) {
+            $BlogPost = new BlogPost();
+            $BlogPost->setTitle('フリーランスになりました。' . $i);
+            $BlogPost->setContent('ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。!');
+            $BlogPost->setSlug('free' . $i);
+            $BlogPost->setCreatedAt(new \DateTime());
+            $BlogPost->setUpdatedAt(new \DateTime());
+            $manager->persist($BlogPost);
+        }
+
         $manager->flush();
 
-        $BlogPost = new BlogPost();
-        $BlogPost->setTitle('ブログ開設しました。');
-        $BlogPost->setContent('ブログ開設しました。今後とも宜しくお願いいたします。');
-        $BlogPost->setSlug('blog-start');
-        $BlogPost->setCreatedAt(new \DateTime());
-        $BlogPost->setUpdatedAt(new \DateTime());
-        $manager->persist($BlogPost);
-        $manager->flush();
+//        $BlogPost = new BlogPost();
+//        $BlogPost->setTitle('ブログ開設しました。');
+//        $BlogPost->setContent('ブログ開設しました。今後とも宜しくお願いいたします。');
+//        $BlogPost->setSlug('blog-start');
+//        $BlogPost->setCreatedAt(new \DateTime());
+//        $BlogPost->setUpdatedAt(new \DateTime());
+//        $manager->persist($BlogPost);
+//        $manager->flush();
     }
 }

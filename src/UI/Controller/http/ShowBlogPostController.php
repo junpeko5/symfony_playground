@@ -6,11 +6,10 @@ namespace App\UI\Controller\http;
 
 use App\Application\Query\BlogPost\ShowBlogPostBySlug;
 use App\Application\UseCases\BlogPost\ShowBlogPostService;
-use App\Infrastructure\Application\QueryBus\QueryBus;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BlogPostController extends AbstractController
+class ShowBlogPostController extends AbstractController
 {
     /**
      * @var ShowBlogPostService
@@ -21,19 +20,6 @@ class BlogPostController extends AbstractController
     {
         $this->useCase = $useCase;
     }
-
-    /**
-     * @Route("/blog/post", name="blog_post")
-     */
-    public function index()
-    {
-
-
-        return $this->render('frontend/blog_post/index.html.twig', [
-            'controller_name' => 'BlogPostController',
-        ]);
-    }
-
 
     /**
      * @Route("/blog/{slug}", name="show_blog_post_by_slug")

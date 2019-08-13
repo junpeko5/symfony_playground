@@ -10,6 +10,8 @@ interface BlogPostRepository
 {
     public function find($id);
 
+    public function findAll();
+
     public function findBy(array $criteria);
 
     public function findBlogPostBySlug(string $slug);

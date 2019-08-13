@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogPostController!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    <main role="main" class="container mt-4">
+        {{ include('frontend/blog_card/blogCard.html.twig') }}
+    </main>
+{% endblock %}
+{% block aside %}
+{% endblock %}
