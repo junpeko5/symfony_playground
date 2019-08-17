@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\UI\Controller\http;
 
-use App\Application\UseCases\User\GetLoginUserService;
+use App\Application\UseCases\User\AfterLoginUserHandler;
 use App\Domain\User\Model\User;
 use App\Infrastructure\UserBundle\Form\LoginUserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,7 +18,7 @@ class LoginController extends AbstractController
 
     private $formFactory;
 
-    public function __construct(GetLoginUserService $useCase, FormFactoryInterface $formFactory)
+    public function __construct(AfterLoginUserHandler $useCase, FormFactoryInterface $formFactory)
     {
         $this->useCase = $useCase;
         $this->formFactory = $formFactory;

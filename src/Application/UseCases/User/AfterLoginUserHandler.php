@@ -6,7 +6,7 @@ namespace App\Application\UseCases\User;
 
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class GetLoginUserService
+class AfterLoginUserHandler
 {
     /**
      * @var AuthenticationUtils
@@ -24,7 +24,7 @@ class GetLoginUserService
     private $email;
 
     /**
-     * GetLoginUserService constructor.
+     * AfterLoginUserHandler constructor.
      * @param AuthenticationUtils $authenticationUtils
      */
     public function __construct(AuthenticationUtils $authenticationUtils)
