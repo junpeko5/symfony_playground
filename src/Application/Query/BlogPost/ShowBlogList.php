@@ -6,7 +6,7 @@ namespace App\Application\Query\BlogPost;
 
 use App\Application\Query\Query;
 
-class ShowBlogPosts implements Query
+class ShowBlogList implements Query
 {
 //    private $page;
 //

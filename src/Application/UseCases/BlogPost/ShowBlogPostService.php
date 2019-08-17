@@ -10,16 +10,32 @@ use App\Application\Query\BlogPost\ShowBlogPostBySlug;
 
 class ShowBlogPostService implements UseCasesService
 {
+    /**
+     * @var BlogPostRepository
+     */
     private $blogPostRepository;
 
+    /**
+     * @var ShowBlogPostBySlug
+     */
+    private $query;
+
+    /**
+     * ShowBlogPostService constructor.
+     * @param BlogPostRepository $blogPostRepository
+     */
     public function __construct(BlogPostRepository $blogPostRepository)
     {
         $this->blogPostRepository = $blogPostRepository;
     }
 
-    public function getBlogPostBySlug(ShowBlogPostBySlug $query)
+    /**
+     * @param $slug
+     * @return mixed
+     */
+    public function handle($slug)
     {
-        $blogPost = $this->blogPostRepository->findBlogPostBySlug($query->getSlug());
-        return $blogPost;
+        $this->query = new ShowBlogPostBySlug($slug);
+        return $this->blogPostRepository->findBlogPostBySlug($this->query->getSlug());
     }
 }

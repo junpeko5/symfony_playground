@@ -23,15 +23,21 @@ class GetLoginUserService
      */
     private $email;
 
+    /**
+     * GetLoginUserService constructor.
+     * @param AuthenticationUtils $authenticationUtils
+     */
     public function __construct(AuthenticationUtils $authenticationUtils)
     {
         $this->authenticationUtils = $authenticationUtils;
     }
 
+    /**
+     *
+     */
     public function execute()
     {
         $this->error = $this->authenticationUtils->getLastAuthenticationError();
-
         $this->email = $this->authenticationUtils->getLastUsername();
     }
 

@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\UI\Controller\http;
 
-use App\Application\UseCases\BlogPost\ShowBlogPostsService;
+use App\Application\UseCases\BlogPost\ShowBlogListService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ShowBlogPostsController extends AbstractController
+class ShowBlogListController extends AbstractController
 {
     /**
-     * @var ShowBlogPostsService
+     * @var ShowBlogListService
      */
     private $useCase;
 
-    public function __construct(ShowBlogPostsService $useCase)
+    public function __construct(ShowBlogListService $useCase)
     {
         $this->useCase = $useCase;
     }
@@ -23,7 +23,7 @@ class ShowBlogPostsController extends AbstractController
     /**
      * @Route("/blog", name="show_blog_posts")
      */
-    public function index()
+    public function __invoke()
     {
         $blogPosts = $this->useCase->handle();
 

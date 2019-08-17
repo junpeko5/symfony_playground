@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\UI\Controller\http;
 
-use App\Application\Query\BlogPost\ShowBlogPostBySlug;
 use App\Application\UseCases\BlogPost\ShowBlogPostService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 class ShowBlogPostController extends AbstractController
 {
@@ -24,12 +24,11 @@ class ShowBlogPostController extends AbstractController
     /**
      * @Route("/blog/{slug}", name="show_blog_post_by_slug")
      * @param string $slug
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function showBlogPost(string $slug)
+    public function __invoke(string $slug)
     {
-        $query = new ShowBlogPostBySlug($slug);
-        $blogPost = $this->useCase->getBlogPostBySlug($query);
+        $blogPost = $this->useCase->handle($slug);
         return $this->render('frontend/blog_post/showBlogPost.html.twig', [
             'blog_post' => $blogPost,
         ]);
