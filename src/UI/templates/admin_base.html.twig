@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="固定サイドバーとナビゲーションバーを備えた基本的な管理ダッシュボードシェル。">
+    <!-- OGP -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@cccabinet">
+    <meta property="og:site_name" content="Bootstrap4移行ガイド" />
+    <meta property="og:title" content="ダッシュボード" />
+    <meta property="og:url" content="https://cccabinet.jpn.org/bootstrap4/sample/dashboard" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="固定サイドバーとナビゲーションバーを備えた基本的な管理ダッシュボードシェル。" />
+    <meta property="fb:app_id" content="2270152383309485" />
+    <meta property="og:image" content="https://cccabinet.jpn.org/bootstrap4/files/example_files/8/dashboard.png" />
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="960">
+    <meta property="og:image:height" content="600">
+    <title>{% block title %}ダッシュボード{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9/build/styles/github.min.css">
+    <link rel="stylesheet" href="https://cccabinet.jpn.org/bootstrap4/css/samples.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/js/all.min.js" data-search-pseudo-elements></script>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    <style>
+        body {
+            font-size: .875rem;
+        }
+
+        .feather {
+            width: 16px;
+            height: 16px;
+            vertical-align: text-bottom;
+        }
+
+        /*
+         * サイドバー
+         */
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100; /* ナビゲーションバーの背面 */
+            padding: 48px 0 0; /* ナビゲーションバーの高さ */
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        }
+
+        .sidebar-sticky {
+            position: relative;
+            top: 0;
+            height: calc(100vh - 48px);
+            padding-top: .5rem;
+            overflow-x: hidden;
+            overflow-y: auto; /* ビューポートがコンテンツより短い場合、スクロール可能なコンテンツ */
+        }
+
+        @supports ((position: -webkit-sticky) or (position: sticky)) {
+            .sidebar-sticky {
+                position: -webkit-sticky;
+                position: sticky;
+            }
+        }
+
+        .sidebar .nav-link {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .sidebar .nav-link .feather {
+            margin-right: 4px;
+            color: #999;
+        }
+
+        .sidebar .nav-link.active {
+            color: #007bff;
+        }
+
+        .sidebar .nav-link:hover .feather,
+        .sidebar .nav-link.active .feather {
+            color: inherit;
+        }
+
+        .sidebar-heading {
+            font-size: .75rem;
+            text-transform: uppercase;
+        }
+
+        /*
+         * コンテンツ
+         */
+
+        [role="main"] {
+            padding-top: 133px; /* 固定ナビゲーションバーの余白 */
+        }
+
+        @media (min-width: 768px) {
+            [role="main"] {
+                padding-top: 48px; /* 固定ナビゲーションバーの余白 */
+            }
+        }
+
+        /*
+         * ナビゲーションバー
+         */
+
+        .navbar-brand {
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+            font-size: 1rem;
+            background-color: rgba(0, 0, 0, .25);
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+        }
+
+        .navbar .form-control {
+            padding: .75rem 1rem;
+            border-width: 0;
+            border-radius: 0;
+        }
+
+        .form-control-dark {
+            color: #fff;
+            background-color: rgba(255, 255, 255, .1);
+            border-color: rgba(255, 255, 255, .1);
+        }
+
+        .form-control-dark:focus {
+            border-color: transparent;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+        }
+
+    </style>
+</head>
+<body>
+{% block navbar %}
+    <div class="container">
+        {{ include('admin/navbar/navbar.html.twig') }}
+    </div>
+{% endblock %}
+<div class="container-fluid">
+    <div class="row">
+        {{ include('admin/aside/aside.html.twig') }}
+{% block content %}{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+    </div>
+</div>
+</body>
+</html>

@@ -13,6 +13,8 @@ require('bootstrap/dist/css/bootstrap.min.css');
 const $ = require('jquery');
 require('bootstrap/dist/js/bootstrap.bundle.min.js');
 
+const feather = require('feather-icons/dist/feather.min.js')
+feather.replace()
 // console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 // $(document).ready(function() {
 //   $('body').prepend('<h1>hello jQuery!!!!!!!!!</h1>');

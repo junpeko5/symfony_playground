@@ -31,7 +31,8 @@ class LoginController extends AbstractController
     public function login(): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('home_page');
+            dd($this->getUser());
+            return $this->redirectToRoute('dashboard');
         }
 
         $this->useCase->execute();
