@@ -7,7 +7,7 @@ namespace App\Application\UseCases\BlogPost;
 use App\Application\UseCases\UseCasesService;
 use App\Domain\User\Repository\BlogPostRepository;
 
-class ShowBlogListService implements UseCasesService
+class GetBlogListService implements UseCasesService
 {
     /**
      * @var BlogPostRepository
@@ -15,7 +15,7 @@ class ShowBlogListService implements UseCasesService
     private $blogPostRepository;
 
     /**
-     * ShowBlogListService constructor.
+     * GetBlogListService constructor.
      * @param BlogPostRepository $blogPostRepository
      */
     public function __construct(BlogPostRepository $blogPostRepository)
@@ -26,7 +26,7 @@ class ShowBlogListService implements UseCasesService
     /**
      * @return mixed
      */
-    public function handle()
+    public function getBlogPostList()
     {
         return $this->blogPostRepository->findAll();
     }

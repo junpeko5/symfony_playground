@@ -145,10 +145,10 @@
 <div class="container-fluid">
     <div class="row">
         {{ include('admin/aside/aside.html.twig') }}
-{% block content %}{% endblock %}
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{% endblock %}
+        {% block content %}{% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </div>
 </div>
 </body>

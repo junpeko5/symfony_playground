@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Controller\http;
+namespace App\UI\Controller\http\admin;
 
 use App\Application\UseCases\BlogPost\ShowBlogListScenario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ShowBlogListController extends AbstractController
+class AdminBlogListController extends AbstractController
 {
     /**
      * @var ShowBlogListScenario
@@ -21,14 +21,14 @@ class ShowBlogListController extends AbstractController
     }
 
     /**
-     * @Route("/blog", name="show_blog_posts")
+     * @Route("/admin/blog/list", name="admin_blog_list")
      */
     public function __invoke()
     {
         $blogPosts = $this->useCase->handle();
-
-        return $this->render('frontend/blog_post/showBlogPosts.html.twig', [
-            'blog_posts' => $blogPosts,
+//dd($blogPosts);
+        return $this->render('admin/blog_post_list.html.twig', [
+            'blogPosts' => $blogPosts,
         ]);
     }
 }

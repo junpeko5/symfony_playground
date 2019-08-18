@@ -59,9 +59,9 @@ class BlogPost
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return DatetimeFormat::format($this->createdAt);
     }
 
     public function setCreatedAt(\DateTimeInterface $createdAt): self
@@ -71,9 +71,9 @@ class BlogPost
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return DatetimeFormat::format($this->updatedAt);
     }
 
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
