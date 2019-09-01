@@ -26,7 +26,7 @@ class GetBlogListService implements UseCasesService
     /**
      * @return mixed
      */
-    public function getBlogPostList()
+    public function getBlogPostList() : array
     {
         return $this->blogPostRepository->findAll();
     }

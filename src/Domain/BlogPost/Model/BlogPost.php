@@ -35,7 +35,7 @@ class BlogPost
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getContent(): string
     {
         return $this->content;
     }
@@ -59,27 +59,14 @@ class BlogPost
         return $this;
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): \DateTime
     {
-        return DatetimeFormat::format($this->createdAt);
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+
+    public function getUpdatedAt(): \DateTime
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): string
-    {
-        return DatetimeFormat::format($this->updatedAt);
-    }
-
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
+        return $this->updatedAt;
     }
 }

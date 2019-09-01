@@ -32,13 +32,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for blogPost in blogPosts%}
+                {% for blog in blogList %}
                 <tr>
-                    <td>{{ blogPost.id }}</td>
-                    <td>{{ blogPost.title }}</td>
-                    <td>{{ blogPost.content }}</td>
-                    <td>{{ blogPost.createdAt }}</td>
-                    <td>{{ blogPost.updatedAt }}</td>
+                    <td>{{ blog.id }}</td>
+                    <td>{{ blog.title }}</td>
+                    <td>{{ blog.content }}</td>
+                    <td>{{ blog.createdAt| date('Y/m/d') }}</td>
+                    <td>{{ blog.updatedAt| date('Y/m/d') }}</td>
                 </tr>
                 {% endfor %}
                 </tbody>

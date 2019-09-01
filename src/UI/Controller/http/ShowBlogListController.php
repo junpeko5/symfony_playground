@@ -25,10 +25,10 @@ class ShowBlogListController extends AbstractController
      */
     public function __invoke()
     {
-        $blogPosts = $this->useCase->handle();
+        $blogList = $this->useCase->handle();
 
         return $this->render('frontend/blog_post/showBlogPosts.html.twig', [
-            'blog_posts' => $blogPosts,
+            'blogList' => $blogList,
         ]);
     }
 }

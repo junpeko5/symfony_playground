@@ -25,10 +25,10 @@ class AdminBlogListController extends AbstractController
      */
     public function __invoke()
     {
-        $blogPosts = $this->useCase->handle();
-//dd($blogPosts);
+        $blogList = $this->useCase->handle();
+
         return $this->render('admin/blog_post_list.html.twig', [
-            'blogPosts' => $blogPosts,
+            'blogList' => $blogList,
         ]);
     }
 }
