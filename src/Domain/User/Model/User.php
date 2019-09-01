@@ -12,6 +12,8 @@ class User implements UserInterface
 
     private $email;
 
+    private $username;
+
     private $roles = [];
 
     private $password;
@@ -43,7 +45,14 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
     }
 
     /**

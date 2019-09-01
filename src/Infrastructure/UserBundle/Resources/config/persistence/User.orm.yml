@@ -15,18 +15,25 @@ App\Domain\User\Model\User:
       generator:
         strategy: IDENTITY
   fields:
-    password:
-      type: string
-      scale: 0
-      length: 64
-      unique: false
-      nullable: false
-      precision: 0
     email:
       type: string
       scale: 0
       length: 255
       unique: true
+      nullable: false
+      precision: 0
+    username:
+      type: string
+      scale: 0
+      length: 255
+      unique: false
+      nullable: false
+      precision: 0
+    password:
+      type: string
+      scale: 0
+      length: 64
+      unique: false
       nullable: false
       precision: 0
     roles:

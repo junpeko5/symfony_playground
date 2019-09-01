@@ -22,11 +22,13 @@ class UserFixtures extends Fixture
     private const USERS = [
         [
             'email' => 'brad@gmail.com',
+            'username' => 'Brad',
             'password' => 'password',
             'roles' => [User::ROLE_ADMIN],
         ],
         [
             'email' => 'jun@gmail.com',
+            'username' => 'Junpeko',
             'password' => 'password',
             'roles' => [User::ROLE_USER],
         ],
@@ -58,6 +60,7 @@ class UserFixtures extends Fixture
         foreach (self::USERS as $userFixture) {
             $User = new User();
             $User->setEmail($userFixture['email']);
+            $User->setUsername($userFixture['username']);
             $password = $this->passwordEncoder->encodePassword($User, $userFixture['password']);
             $User->setPassword($password);
             $User->setRoles($userFixture['roles']);
