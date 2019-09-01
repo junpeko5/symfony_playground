@@ -46,3 +46,12 @@ App\Domain\BlogPost\Model\BlogPost:
       unique: false
       nullable: false
       precision: 0
+  manyToOne:
+    user:
+      targetEntity: App\Domain\User\Model\User
+      joinColumn:
+#        name: user
+        nullable: false
+        onDelete: CASCADE
+      cascade:
+        - all
