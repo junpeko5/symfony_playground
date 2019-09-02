@@ -1,6 +1,6 @@
-App\Domain\BlogPost\Model\BlogPost:
+App\Domain\Category\Model\Category:
   type: entity
-  repositoryClass: App\Infrastructure\BlogPostBundle\Repository\DoctrineBlogPostRepository
+  repositoryClass: App\Infrastructure\CategoryBundle\Repository\DoctrineCategoryRepository
   id:
     id:
       type: integer
@@ -14,20 +14,7 @@ App\Domain\BlogPost\Model\BlogPost:
       generator:
         strategy: IDENTITY
   fields:
-    title:
-      type: string
-      scale: 0
-      length: 255
-      unique: true
-      nullable: false
-      precision: 0
-    content:
-      type: text
-      scale: 0
-      unique: false
-      nullable: false
-      precision: 0
-    slug:
+    name:
       type: string
       scale: 0
       length: 255
@@ -47,10 +34,10 @@ App\Domain\BlogPost\Model\BlogPost:
       nullable: false
       precision: 0
   manyToOne:
-    user:
-      targetEntity: App\Domain\User\Model\User
+    blogPost:
+      targetEntity: App\Domain\BlogPost\Model\BlogPost
       joinColumn:
-        name: user
+        name: blogPost
         nullable: false
         onDelete: CASCADE
       cascade:
