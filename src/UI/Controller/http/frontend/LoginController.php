@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Controller\http;
+namespace App\UI\Controller\http\frontend;
 
 use App\Application\UseCases\User\AfterLoginUserHandler;
 use App\Domain\User\Model\User;

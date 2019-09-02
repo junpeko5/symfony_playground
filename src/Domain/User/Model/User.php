@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\User\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface
@@ -18,8 +20,15 @@ class User implements UserInterface
 
     private $password;
 
+    private $blogPosts;
+
     public const ROLE_USER = 'ROLE_USER';
     public const ROLE_ADMIN = 'ROLE_ADMIN';
+
+    public function __construct()
+    {
+        $this->blogPosts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -87,6 +96,11 @@ class User implements UserInterface
         $this->password = $password;
 
         return $this;
+    }
+
+    public function getBlogPosts(): Collection
+    {
+        return $this->blogPosts;
     }
 
     /**

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Controller\http;
+namespace App\UI\Controller\http\frontend;
 
 use App\Infrastructure\Application\QueryBus\QueryBus;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

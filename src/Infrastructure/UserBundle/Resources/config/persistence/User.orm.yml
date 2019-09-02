@@ -41,5 +41,10 @@ App\Domain\User\Model\User:
       scale: 0
       nullable: false
       precision: 0
+  oneToMany:
+    blogPosts:
+      targetEntity: App\Domain\BlogPost\Model\BlogPost
+      mappedBy: user
+
 
   lifecycleCallbacks: {  }

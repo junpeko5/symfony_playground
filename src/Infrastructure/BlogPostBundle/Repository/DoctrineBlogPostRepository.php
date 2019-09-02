@@ -8,6 +8,7 @@ use App\Domain\BlogPost\Model\BlogPost;
 use App\Domain\User\Repository\BlogPostRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\NonUniqueResultException;
 
 /**
  * @method BlogPost|null find($id, $lockMode = null, $lockVersion = null)
@@ -62,12 +63,20 @@ class DoctrineBlogPostRepository extends ServiceEntityRepository implements Blog
         // TODO: Implement save() method.
     }
 
+
     /**
      * @param string $slug
      * @return BlogPost
+     * @throws NonUniqueResultException
      */
     public function findBlogPostBySlug(string $slug): BlogPost
     {
-        return $this->findOneBy(['slug' => $slug]);
+        return $this->createQueryBuilder('b')
+            ->innerJoin('b.user', 'u')
+            ->addSelect('u')
+            ->andWhere('b.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 }

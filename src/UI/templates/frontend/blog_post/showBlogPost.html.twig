@@ -9,11 +9,11 @@
         <div class="row">
             <div class="col-md-8 blog-main">
                 <div class="blog-post">
-                    <h2 class="blog-post-title">{{ blog_post.title }}</h2>
-                    <p class="blog-post-meta">更新日：{{ blog_post.updatedAt | date('Y/m/d')}}　投稿者：<a href="#">管理人</a></p>
+                    <h2 class="blog-post-title">{{ blogPost.title }}</h2>
+                    <p class="blog-post-meta">更新日：{{ blogPost.updatedAt | date('Y/m/d')}}　投稿者：<a href="#">{{ blogPost.User.username }}</a></p>
                 </div>
                 <div class="blog-post">
-                    {{ blog_post.content }}
+                    {{ blogPost.content }}
                 </div><!-- /.blog-post -->
             </div><!-- /.blog-main -->
             {{ include('frontend/aside.html.twig') }}

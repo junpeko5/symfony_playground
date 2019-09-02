@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Controller\http;
+namespace App\UI\Controller\http\frontend;
 
 use App\Application\UseCases\BlogPost\ShowBlogPostService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,7 +30,7 @@ class ShowBlogPostController extends AbstractController
     {
         $blogPost = $this->useCase->handle($slug);
         return $this->render('frontend/blog_post/showBlogPost.html.twig', [
-            'blog_post' => $blogPost,
+            'blogPost' => $blogPost,
         ]);
     }
 }
