@@ -1,6 +1,6 @@
-App\Domain\Category\Model\Category:
+App\Domain\Tag\Model\Tag:
   type: entity
-  repositoryClass: App\Infrastructure\CategoryBundle\Repository\DoctrineCategoryRepository
+  repositoryClass: App\Infrastructure\TagBundle\Repository\DoctrineTagRepository
   id:
     id:
       type: integer

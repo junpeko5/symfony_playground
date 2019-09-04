@@ -30,10 +30,10 @@ doctrine:
               prefix: 'App\Domain\BlogPost\Model'
               dir: '%kernel.root_dir%/../src/Infrastructure/BlogPostBundle/Resources/config/persistence'
               is_bundle: false
-            Category:
+            Tag:
               type: yml
-              prefix: 'App\Domain\Category\Model'
-              dir: '%kernel.root_dir%/../src/Infrastructure/CategoryBundle/Resources/config/persistence'
+              prefix: 'App\Domain\Tag\Model'
+              dir: '%kernel.root_dir%/../src/Infrastructure/TagBundle/Resources/config/persistence'
               is_bundle: false
 #            App:
 #                type: annotation

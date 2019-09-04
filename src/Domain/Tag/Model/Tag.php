@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Category\Model;
+namespace App\Domain\Tag\Model;
 
 use App\Domain\BlogPost\Model\BlogPost;
 
-class Category
+class Tag
 {
     private $id;
 
@@ -67,6 +67,13 @@ class Category
     public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
         $this->updatedAt = $updated_at;
+
+        return $this;
+    }
+
+    public function setTag(Tag $tag): self
+    {
+        $this->tag = $tag;
 
         return $this;
     }

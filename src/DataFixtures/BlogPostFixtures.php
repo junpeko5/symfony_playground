@@ -6,6 +6,7 @@ use App\Domain\BlogPost\Model\BlogPost;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory;
 
 /**
  * Class BlogPostFixtures
@@ -18,6 +19,8 @@ class BlogPostFixtures extends Fixture implements DependentFixtureInterface
      */
     private $userFixtures;
 
+    private $faker;
+
     /**
      * BlogPostFixtures constructor.
      * @param UserFixtures $userFixtures
@@ -25,6 +28,7 @@ class BlogPostFixtures extends Fixture implements DependentFixtureInterface
     public function __construct(UserFixtures $userFixtures)
     {
         $this->userFixtures = $userFixtures;
+        $this->faker = Factory::create();
     }
 
     /**
@@ -35,12 +39,13 @@ class BlogPostFixtures extends Fixture implements DependentFixtureInterface
     {
         for ($i = 0; $i < 15; $i++) {
             $BlogPost = new BlogPost();
-            $BlogPost->setTitle('フリーランスになりました。' . $i);
-            $BlogPost->setContent('ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。ブログ開設しました。今後とも宜しくお願いいたします。!');
-            $BlogPost->setSlug('free' . $i);
-            $BlogPost->setCreatedAt(new \DateTime());
-            $BlogPost->setUpdatedAt(new \DateTime());
+            $BlogPost->setTitle('title'. $i);
+            $BlogPost->setContent($this->faker->text);
+            $BlogPost->setSlug($this->faker->slug);
+            $BlogPost->setCreatedAt($this->faker->dateTimeThisYear);
+            $BlogPost->setUpdatedAt($this->faker->dateTimeThisYear);
             $BlogPost->setUser($this->userFixtures->getRandomUserReference());
+            $this->addReference('blog_'.$i, $BlogPost);
             $manager->persist($BlogPost);
         }
         $manager->flush();
@@ -54,5 +59,10 @@ class BlogPostFixtures extends Fixture implements DependentFixtureInterface
         return array(
             UserFixtures::class,
         );
+    }
+
+    public function getRandomBlogPostReference(): object
+    {
+        return $this->getReference('blog_'. (string)rand(0, 14));
     }
 }

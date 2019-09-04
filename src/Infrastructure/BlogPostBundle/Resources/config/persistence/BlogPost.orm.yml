@@ -55,4 +55,10 @@ App\Domain\BlogPost\Model\BlogPost:
         onDelete: CASCADE
       cascade:
         - all
+  oneToMany:
+    tags:
+      targetEntity: App\Domain\Tag\Model\Tag
+      mappedBy: blogPost
+      joinColumn:
+        nullable: true
 

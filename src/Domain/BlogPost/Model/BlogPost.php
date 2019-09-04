@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Domain\BlogPost\Model;
 
+use App\Domain\Tag\Model\Tag;
 use App\Domain\User\Model\User;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -47,6 +50,18 @@ class BlogPost
      * @var
      */
     private $updatedAt;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $tags;
+
+    private $tag;
+
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
 
     /**
      * @return int|null
@@ -166,6 +181,36 @@ class BlogPost
     public function setUser(UserInterface $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function setTag(Tag $tag): self
+    {
+        $this->tag = $tag;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param Tag $tag
+     * @return BlogPost
+     */
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag))
+        {
+            $this->tags[] = $tag;
+            $tag->setTag($tag);
+        }
 
         return $this;
     }
